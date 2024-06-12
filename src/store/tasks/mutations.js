@@ -5,3 +5,7 @@ export function updateTask (state, payload) {
 export function deleteTask (state, id) {
   delete state.tasks[id]
 }
+
+export function addTask (state, payload) {
+  state.tasks[payload.id] = payload.task
+}
