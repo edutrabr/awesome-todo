@@ -6,12 +6,13 @@
         :key="id"
         :task="task"
         :id="id"
+        @edit="showFormTask('edit', id)"
       />
     </q-list>
 
     <div class="absolute-bottom q-mb-md text-center">
       <q-btn
-        @click="showAddtask = true"
+        @click="showFormTask('add')"
         round
         color="primary"
         icon="add"
@@ -20,7 +21,11 @@
     </div>
 
     <q-dialog v-model="showAddtask">
-      <form-add-task @close="showAddtask = false"></form-add-task>
+      <form-add-task
+        @close="showAddtask = false"
+        :mode="modeAddTask"
+        :taskId="taskId"
+      ></form-add-task>
     </q-dialog>
   </q-page>
 </template>
@@ -37,7 +42,17 @@ export default {
   },
   data() {
     return {
-      showAddtask: false
+      showAddtask: false,
+      modeAddTask: 'add',
+      taskId: ''
+    }
+  },
+  methods: {
+    showFormTask(mode, key) {
+      this.modeAddTask = mode
+      this.taskId = key
+      this.showAddtask = true
+      console.log(this.modeAddTask, this.taskId)
     }
   },
   computed: {

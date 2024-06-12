@@ -37,14 +37,24 @@
     </q-item-section>
 
     <q-item-section side>
-      <q-btn
-        flat
-        round
-        dense
-        color="red"
-        icon="delete"
-        @click.stop="promptDelete(id)"
-      />
+      <div>
+        <q-btn
+          flat
+          round
+          dense
+          color="blue-12"
+          icon="edit"
+          @click.stop="$emit('edit')"
+        />
+        <q-btn
+          flat
+          round
+          dense
+          color="red"
+          icon="delete"
+          @click.stop="promptDelete(id)"
+        />
+      </div>
     </q-item-section>
   </q-item>
 </template>
